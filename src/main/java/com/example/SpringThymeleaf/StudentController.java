@@ -16,8 +16,15 @@ package com.example.SpringThymeleaf;
         }
 
         @RequestMapping("/create_student")
-        public String createStudent(@RequestParam(value="first_name") String firstName, @RequestParam(value= "last_name") String lastName, @RequestParam(value= "grade") Model model) {
+        public String createStudent(@RequestParam(value="first_name") String firstName, @RequestParam(value= "last_name") String lastName, @RequestParam(value= "grade") Grade grade, Model model) {
+
             Student student = new Student();
+            student.setFirstName("firstName");
+            student.setLastName("lastName");
+            student.setGrade(grade);
+
+
+            model.addAttribute(student);
 
             return "view_student";
         }
